@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101114">
+  <meta name="description" content="在 iPhone 上使用的 iPod nano 風格 YouTube 音樂播放器">
+  <title>iPod nano Web App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell" aria-label="iPod nano Web App">
+    <section class="ipod" aria-label="iPod nano 模擬器">
+      <div class="screen-frame"><div class="screen" id="screen"><header class="status-bar"><span id="screen-title">Music</span><span class="battery">▮▮▮▮</span></header><div class="screen-body" id="screen-body"></div><div class="now-playing-mini" id="mini-player" hidden><img id="mini-art" alt="" src=""><div><strong id="mini-title">尚未播放</strong><small id="mini-artist">—</small></div><button id="mini-play" aria-label="播放或暫停">▶</button></div></div></div>
+      <div class="click-wheel" id="click-wheel" aria-label="點選轉盤"><button class="wheel-button menu" data-action="menu">MENU</button><button class="wheel-button prev" data-action="prev" aria-label="上一首">◀◀</button><button class="wheel-button next" data-action="next" aria-label="下一首">▶▶</button><button class="wheel-button play" data-action="toggle" aria-label="播放或暫停">▶Ⅱ</button><button class="wheel-center" data-action="select" aria-label="選擇">●</button></div>
+    </section>
+    <aside class="library-panel"><div class="panel-heading"><div><span class="eyebrow">YOUR MUSIC</span><h1>iPod nano</h1></div><button class="icon-button" id="theme-toggle" title="切換外觀">☼</button></div><p class="intro">把 YouTube 音樂整理成你的隨身播放清單。</p><div class="quick-actions"><button class="primary" id="add-song">＋ 加入歌曲</button><button class="secondary" id="import-playlist">匯入播放列表</button></div><div class="library-list" id="library-list"></div><footer><span id="song-count">0 首歌曲</span><button class="text-button" id="clear-library">清除全部</button></footer></aside>
+  </main>
+  <dialog id="song-dialog"><form method="dialog" class="dialog-card"><button class="close" value="cancel" aria-label="關閉">×</button><span class="eyebrow">ADD TO LIBRARY</span><h2>加入 YouTube 歌曲</h2><p>貼上影片網址，系統會自動從標題辨識歌手與歌名。</p><label>YouTube 網址<input id="song-url" type="url" placeholder="https://youtu.be/..." required></label><label>自訂名稱（選填）<input id="song-name" type="text" placeholder="例如：Midnight City — M83"></label><button class="primary wide" value="default">加入歌曲</button><div class="form-message" id="song-message"></div></form></dialog>
+  <dialog id="playlist-dialog"><form method="dialog" class="dialog-card wide-dialog"><button class="close" value="cancel" aria-label="關閉">×</button><span class="eyebrow">IMPORT PLAYLIST</span><h2>整批匯入 YouTube 播放列表</h2><p>可貼上播放列表網址。若沒有 API Key，也能一次貼上多個 YouTube 影片網址（每行一個）。</p><label>YouTube Data API v3 Key（選填）<input id="api-key" type="password" placeholder="只儲存在本機瀏覽器"></label><label>播放列表網址或影片網址清單<textarea id="playlist-input" rows="5" placeholder="https://www.youtube.com/playlist?list=...&#10;或每行貼上一個影片網址"></textarea></label><button class="primary wide" value="default">開始匯入</button><div class="form-message" id="playlist-message"></div></form></dialog>
+  <div id="youtube-player" aria-hidden="true"></div><script src="https://www.youtube.com/iframe_api"></script><script src="app.js"></script>
+</body></html>
